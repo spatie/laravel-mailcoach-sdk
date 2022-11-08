@@ -1,24 +1,26 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "spatie/laravel-mailcoach-sdk",
+    "description": "An SDK to easily work with the Mailcoach API in Laravel apps",
     "keywords": [
-        ":vendor_name",
+        "spatie",
         "laravel",
-        ":package_slug"
+        "laravel-mailcoach-sdk"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/spatie/laravel-mailcoach-sdk",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
+        "guzzlehttp/guzzle": "^6.0|^7.5",
+        "illuminate/contracts": "^9.0",
         "spatie/laravel-package-tools": "^1.13.0",
-        "illuminate/contracts": "^9.0"
+        "spatie/mailcoach-sdk-php": "^0.0.3"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -35,13 +37,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Spatie\\MailcoachSdk\\": "src",
+            "Spatie\\MailcoachSdk\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Spatie\\MailcoachSdk\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Spatie\\MailcoachSdk\\MailcoachSdkServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "MailcoachSdk": "Spatie\\MailcoachSdk\\Facades\\MailcoachSdk"
             }
         }
     },
