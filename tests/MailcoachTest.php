@@ -8,7 +8,7 @@ it('can get mailcoach instance', function () {
 
     config()->set('mailcoach-sdk', [
         'api_token' => 'fake-token',
-        'endpoint' => 'fake-endpoint'
+        'endpoint' => 'fake-endpoint',
     ]);
 
     $token = Mailcoach::apiToken();

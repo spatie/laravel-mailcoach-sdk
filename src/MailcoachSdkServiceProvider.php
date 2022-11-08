@@ -4,7 +4,6 @@ namespace Spatie\MailcoachSdk;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\MailcoachSdk\Commands\MailcoachSdkCommand;
 
 class MailcoachSdkServiceProvider extends PackageServiceProvider
 {

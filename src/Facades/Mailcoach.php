@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Facade;
  */
 class Mailcoach extends Facade
 {
-
     protected static function getFacadeAccessor()
     {
         return \Spatie\MailcoachSdk\Mailcoach::class;
