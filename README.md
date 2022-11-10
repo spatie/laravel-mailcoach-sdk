@@ -15,10 +15,10 @@ use Spatie\MailcoachSdk\Facades\Mailcoach;
 // creating a campaign
 $campaign = Mailcoach::createCampaign([
     'email_list_uuid' => 'use-a-real-email-list-uuid-here',
-    'name' => 'My new campaign'
+    'name' => 'My new campaign',
     'fields' => [
         'title' => 'The title on top of the newsletter',
-        'content' => '# Welcome to my newsletter'
+        'content' => '# Welcome to my newsletter',
     ],
 ]);
 
@@ -74,7 +74,7 @@ return [
      */
     'api_token' => env('MAILCOACH_API_TOKEN'),
 
-    'endpoint' => env('MAILCOACH_API_ENDPOINT')
+    'endpoint' => env('MAILCOACH_API_ENDPOINT'),
 ];
 ```
 
@@ -148,7 +148,7 @@ Take a look at the source code of `Spatie\MailcoachSdk\Resources\EmailList` to s
 
 You can update an email list by change one of the properties and calling `save()`.
 
-```
+```php
 $emailList->name = 'Updated name';
 $emailList->save();
 ```
@@ -223,7 +223,7 @@ Take a look at the source code of `Spatie\MailcoachSdk\Resources\Subscriber` to 
 
 You can update a subscriber by change one of the properties and calling `save()`.
 
-```
+```php
 $subscriber->firstName = 'Updated name';
 $subscriber->save();
 ```
@@ -262,10 +262,10 @@ use Spatie\MailcoachSdk\Facades\Mailcoach;
 $campaign = Mailcoach::createCampaign([
    'name' => 'My new campaign',
    'subject' => 'Here is some fantastic content for you',
-   'email_list_uuid' => '<email-list-uuid>'
+   'email_list_uuid' => '<email-list-uuid>',
    
    // optionally, you can specify the uuid of a template
-   'template_uuid' => '<template-uuid'>
+   'template_uuid' => '<template-uuid>',
    
    // if that template has field, you can pass the values
    // in the `fields` array. If you use the markdown editor,
@@ -289,7 +289,7 @@ Take a look at the source code of `Spatie\MailcoachSdk\Resources\Campaign` to se
 
 You can update a campaign by change one of the properties and calling `save()`.
 
-```
+```php
 $campaign->name = 'Campaign';
 $campaign->save();
 ```
