@@ -5,7 +5,7 @@ namespace Spatie\MailcoachSdk\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Spatie\MailcoachSdk\MailcoachSdk
+ * @see \Spatie\MailcoachSdk\Mailcoach
  */
 class Mailcoach extends Facade
 {
