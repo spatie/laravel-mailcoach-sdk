@@ -205,13 +205,14 @@ This how you can create a subscriber:
 ```php
 use Spatie\MailcoachSdk\Facades\Mailcoach;
 
-$subscriber = Mailcoach::createSubscriber(
-    emailListUuid: '<email-list-uuid>',
-    attributes: [
+$subscriber = Mailcoach::createSubscriber([
+    'emailListUuid' => '<email-list-uuid>',
+    'attributes' => [
         'email' => '<email-address>',
         'first_name' => 'John',
         'last_name' => 'Doe',
-    ]);
+    ]
+]);
 ```
 
 You can get properties of a subscriber:
