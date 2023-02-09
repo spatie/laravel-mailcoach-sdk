@@ -211,6 +211,7 @@ $subscriber = Mailcoach::createSubscriber(
         'email' => '<email-address>',
         'first_name' => 'John',
         'last_name' => 'Doe',
+        'tags' => ['Newsletter'],
     ]);
 ```
 
