@@ -4,6 +4,7 @@ namespace Spatie\MailcoachSdk;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Spatie\MailcoachSdk\Exceptions\MailcoachException;
 
 class MailcoachSdkServiceProvider extends PackageServiceProvider
 {
@@ -14,15 +15,15 @@ class MailcoachSdkServiceProvider extends PackageServiceProvider
             ->hasConfigFile();
     }
 
-    public function registeringPackage()
+    public function registeringPackage(): void
     {
         $this->app->bind(Mailcoach::class, function () {
             if (config('mailcoach-sdk.api_token') === null) {
-                return null;
+                throw MailcoachException::missingApiToken();
             }
 
             if (config('mailcoach-sdk.endpoint') === null) {
-                return null;
+                throw MailcoachException::missingEndpoint();
             }
 
             return new Mailcoach(
