@@ -15,3 +15,25 @@ it('can get mailcoach instance', function () {
 
     expect($token)->toBe('fake-token');
 });
+
+it('throws an exception when no api token is set', function () {
+    (new MailcoachSdkServiceProvider($this->app))->bootingPackage();
+
+    config()->set('mailcoach-sdk', [
+        'api_token' => null,
+        'endpoint' => 'fake-endpoint',
+    ]);
+
+    Mailcoach::apiToken();
+})->throws('No Mailcoach API token was provided. Please provide an API token in the `mailcoach-sdk.api_token` config key.');
+
+it('throws an exception when no endpoint is set', function () {
+    (new MailcoachSdkServiceProvider($this->app))->bootingPackage();
+
+    config()->set('mailcoach-sdk', [
+        'api_token' => 'fake-token',
+        'endpoint' => null,
+    ]);
+
+    Mailcoach::apiToken();
+})->throws('No Mailcoach endpoint was provided. Please provide an endpoint in the `mailcoach-sdk.endpoint` config key.');
