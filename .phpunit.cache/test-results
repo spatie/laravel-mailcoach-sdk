@@ -1,1 +1,0 @@
-{"version":"pest_2.34.2","defects":[],"times":{"P\\Tests\\MailcoachTest::__pest_evaluable_it_throws_an_exception_when_no_endpoint_is_set":0.012,"P\\Tests\\MailcoachTest::__pest_evaluable_it_can_get_mailcoach_instance":0.005,"P\\Tests\\MailcoachTest::__pest_evaluable_it_throws_an_exception_when_no_api_token_is_set":0}}
