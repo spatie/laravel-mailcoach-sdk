@@ -37,3 +37,22 @@ it('throws an exception when no endpoint is set', function () {
 
     Mailcoach::apiToken();
 })->throws('No Mailcoach endpoint was provided. Please provide an endpoint in the `mailcoach-sdk.endpoint` config key.');
+
+it('can create a fake', function () {
+    config()->set('mailcoach-sdk', [
+        'api_token' => 'fake-token',
+        'endpoint' => 'fake-endpoint',
+    ]);
+
+    Mailcoach::fake();
+
+    Mailcoach::campaigns();
+
+    expect(Mailcoach::getRequests())->toBe([
+        [
+            'verb' => 'GET',
+            'uri' => 'campaigns',
+            'payload' => [],
+        ]
+    ]);
+});
