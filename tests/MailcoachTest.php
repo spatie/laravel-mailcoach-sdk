@@ -53,6 +53,6 @@ it('can create a fake', function () {
             'verb' => 'GET',
             'uri' => 'campaigns',
             'payload' => [],
-        ]
+        ],
     ]);
 });

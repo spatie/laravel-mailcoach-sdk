@@ -9,7 +9,8 @@ class MailcoachFake extends Mailcoach implements Fake
 {
     protected array $requests = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct('fake-token', 'fake-endpoint');
     }
 
