@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-mailcoach-sdk` will be documented in this file.
 
+## 1.3.0 - 2024-07-30
+
+### What's Changed
+
+* Add a basic `Mailcoach::fake()` method that creates a fake and records the requests
+* Bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/spatie/laravel-mailcoach-sdk/pull/25
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/spatie/laravel-mailcoach-sdk/pull/26
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/spatie/laravel-mailcoach-sdk/pull/27
+
+**Full Changelog**: https://github.com/spatie/laravel-mailcoach-sdk/compare/1.2.0...1.3.0
+
 ## 1.2.0 - 2024-03-14
 
 ### What's Changed
