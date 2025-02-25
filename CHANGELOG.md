@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-mailcoach-sdk` will be documented in this file.
 
+## 1.4.0 - 2025-02-25
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/spatie/laravel-mailcoach-sdk/pull/30
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/spatie/laravel-mailcoach-sdk/pull/31
+* Add Laravel 12 support by @the-pulli in https://github.com/spatie/laravel-mailcoach-sdk/pull/33
+
+### New Contributors
+
+* @the-pulli made their first contribution in https://github.com/spatie/laravel-mailcoach-sdk/pull/33
+
+**Full Changelog**: https://github.com/spatie/laravel-mailcoach-sdk/compare/1.3.0...1.4.0
+
 ## 1.3.0 - 2024-07-30
 
 ### What's Changed
