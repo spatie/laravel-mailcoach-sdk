@@ -1,8 +1,8 @@
 # An SDK to easily work with the Mailcoach API in Laravel apps
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-mailcoach-sdk.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-mailcoach-sdk)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-mailcoach-sdk/run-tests?label=tests)](https://github.com/spatie/laravel-mailcoach-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-mailcoach-sdk/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/spatie/laravel-mailcoach-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-mailcoach-sdk/run-tests.yml?label=tests)](https://github.com/spatie/laravel-mailcoach-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-mailcoach-sdk/fix-php-code-style-issues.yml?label=code%20style)](https://github.com/spatie/laravel-mailcoach-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-mailcoach-sdk.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-mailcoach-sdk)
 
 This package contains the PHP SDK to work with [Mailcoach](https://mailcoach.app). Both self-hosted (v6 and up) and hosted Mailcoach (aka Mailcoach Cloud) are supported. Using this package you can manage email lists, subscribers and campaigns.
