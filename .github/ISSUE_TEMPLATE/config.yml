@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: Report a security issue
-    url: https://github.com/spatie/laravel-mailcoach-sdk/security/policy
-    about: Learn how to notify us for sensitive bugs
-  - name: Report a bug
-    url: https://github.com/spatie/laravel-mailcoach-sdk/issues/new
-    about: Report a reproducible bug
