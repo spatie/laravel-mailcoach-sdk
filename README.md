@@ -242,7 +242,7 @@ $subscriber->delete();
 
 ### Working with Eloquent models
 
-Add the `InteractsWithMailcoach` trait and implement `MailcoachSubscriber` on your model. The required `mailcoachEmailListUuid()` method determines which list the model uses.
+Add the `InteractsWithMailcoach` trait and implement `MailcoachSubscriber` on your model, typically your `User` model. The trait assumes the model has an `email` property. The required `mailcoachEmailListUuid()` method determines which list the model uses.
 
 ```php
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -255,22 +255,12 @@ class User extends Authenticatable implements MailcoachSubscriber
 
     public function mailcoachEmailListUuid(): string
     {
-        return config('services.mailcoach.users_list_uuid');
+        return '<email-list-uuid>';
     }
 }
 ```
 
-Your application owns the list configuration. For the example above, add this entry to your application's `config/services.php` and set `MAILCOACH_USERS_LIST_UUID` in your `.env`:
-
-```php
-'mailcoach' => [
-    'users_list_uuid' => env('MAILCOACH_USERS_LIST_UUID'),
-],
-```
-
-You can also return a list UUID from a tenant record or another application-specific source. No list configuration is added to `mailcoach-sdk.php`.
-
-The trait reads the model's `email` attribute by default. You can then call:
+You can then call:
 
 ```php
 $user->subscribeToMailcoach();
