@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-mailcoach-sdk` will be documented in this file.
 
+## 1.6.0 - 2026-09-08
+
+### What's Changed
+
+* Add Mailcoach subscriber integration for Eloquent models by @AlexVanderbist in https://github.com/spatie/laravel-mailcoach-sdk/pull/48
+
+**Full Changelog**: https://github.com/spatie/laravel-mailcoach-sdk/compare/1.5.0...1.6.0
+
 ## 1.5.0 - 2026-03-18
 
 Support Laravel 13, drop support below Laravel 12, upgrade to Pest 4
