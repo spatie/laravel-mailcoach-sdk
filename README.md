@@ -240,6 +240,106 @@ $subscriber->unsubscribe();
 $subscriber->delete();
 ```
 
+### Working with Eloquent models
+
+Add the `InteractsWithMailcoach` trait and implement `MailcoachSubscriber` on your model. The required `mailcoachEmailListUuid()` method determines which list the model uses.
+
+```php
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\MailcoachSdk\Concerns\InteractsWithMailcoach;
+use Spatie\MailcoachSdk\Contracts\MailcoachSubscriber;
+
+class User extends Authenticatable implements MailcoachSubscriber
+{
+    use InteractsWithMailcoach;
+
+    public function mailcoachEmailListUuid(): string
+    {
+        return config('services.mailcoach.users_list_uuid');
+    }
+}
+```
+
+Your application owns the list configuration. For the example above, add this entry to your application's `config/services.php` and set `MAILCOACH_USERS_LIST_UUID` in your `.env`:
+
+```php
+'mailcoach' => [
+    'users_list_uuid' => env('MAILCOACH_USERS_LIST_UUID'),
+],
+```
+
+You can also return a list UUID from a tenant record or another application-specific source. No list configuration is added to `mailcoach-sdk.php`.
+
+The trait reads the model's `email` attribute by default. You can then call:
+
+```php
+$user->subscribeToMailcoach();
+$user->tagMailcoach(['activated', 'subscribed']);
+$user->untagMailcoach(['trial']);
+$user->unsubscribeFromMailcoach();
+$user->resubscribeToMailcoach();
+```
+
+Tag methods accept arrays, matching the PHP SDK's `addTags()` and `removeTags()` methods. These operations return the model, so you can chain them:
+
+```php
+$user->subscribeToMailcoach()->tagMailcoach(['activated']);
+```
+
+`subscribeToMailcoach()` creates a subscriber if missing. Existing subscribers are left unchanged, including their attributes and subscription status. Use `resubscribeToMailcoach()` to explicitly resubscribe an unsubscribed subscriber. It creates a subscriber if missing and leaves active or unconfirmed subscribers unchanged.
+
+`tagMailcoach()` creates a subscriber if missing, then adds the given tags. It preserves existing tags and subscription status. `unsubscribeFromMailcoach()` and `untagMailcoach()` do nothing if the subscriber is missing. Empty tag arrays do nothing.
+
+Every operation accepts an optional trailing `emailListUuid` argument to override the model's list:
+
+```php
+$user->subscribeToMailcoach(emailListUuid: $otherListUuid);
+$user->tagMailcoach(['customer'], emailListUuid: $otherListUuid);
+$user->isSubscribedToMailcoach(emailListUuid: $otherListUuid);
+```
+
+An override applies only to that call. Each subsequent call, including a chained call, uses the model's list unless you pass another override.
+
+To customize the email address or subscriber creation attributes, override these methods on your model:
+
+```php
+public function mailcoachEmail(): string
+{
+    return $this->contact_email;
+}
+
+public function mailcoachAttributes(): array
+{
+    return [
+        'first_name' => $this->first_name,
+        'last_name' => $this->last_name,
+        'extra_attributes' => ['plan' => $this->plan],
+    ];
+}
+```
+
+By default, no attributes besides email are sent. You can also pass creation attributes to `subscribeToMailcoach()`:
+
+```php
+$user->subscribeToMailcoach(['first_name' => 'Jane', 'tags' => ['customer']]);
+```
+
+Explicit attributes replace matching values from `mailcoachAttributes()`. The email always comes from `mailcoachEmail()`, even if attributes contain an `email` key. Creation follows Mailcoach's confirmation behavior unless you supply an option such as `skip_confirmation`.
+
+To check subscription status or access the SDK subscriber:
+
+```php
+$isSubscribed = $user->isSubscribedToMailcoach();
+$subscriber = $user->mailcoachSubscriber();
+$subscriber?->confirm();
+```
+
+`mailcoachSubscriber()` returns a `Spatie\MailcoachSdk\Resources\Subscriber` or `null`. `isSubscribedToMailcoach()` returns `false` for missing, unconfirmed, or unsubscribed subscribers.
+
+All operations run synchronously and can make API requests, including lookup and status methods. Results are not cached. SDK errors are passed through to your application. Blank email addresses or list UUIDs cause an exception before a request is sent.
+
+Adding the trait does not register model listeners or sync changes automatically. Subscribers are looked up using the current email and selected list. Changing the model's email does not update the old Mailcoach subscriber's address. No database columns are required.
+
 ### Working with campaigns
 
 Here's how to get all campaigns.
